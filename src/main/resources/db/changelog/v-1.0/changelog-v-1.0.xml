@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="version-1.0" author="maslov_ilya">
+        <tagDatabase tag="v-1.0"/>
+    </changeSet>
+
+    <include file="01_feeling_table_group_name.sql" relativeToChangelogFile="true"/>
+    <include file="02_feeling_table_status.sql" relativeToChangelogFile="true"/>
+    <include file="03_feeling_table_teacher.sql" relativeToChangelogFile="true"/>
+    <include file="04_feeling_table_schedule.sql" relativeToChangelogFile="true"/>
+    <include file="05_feeling_table_student.sql" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: t-bot
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
+    default-schema: public
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+bot-credentials:
+  name: good_mood_guide_bot
+  token: 7179259645:AAFbrzpiXKFqVWssU8l5GHU7AdpKPX-I6lg
+  owner: 800063551
+
+
