@@ -5,21 +5,22 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 
 import java.util.List;
 
-public class ButtonsToBe {
+public class ButtonsPronouns {
 
-    private static final InlineKeyboardButton PRESENT_TO_BE_BUTTON = new InlineKeyboardButton("Present");
-    private static final InlineKeyboardButton PAST_TO_BE_BUTTON = new InlineKeyboardButton("Past");
-    private static final InlineKeyboardButton FUTURE_TO_BE_BUTTON = new InlineKeyboardButton("Future");
+
+    private static final InlineKeyboardButton PERSONAL_PRONOUNS_BUTTON = new InlineKeyboardButton("Personal");
+    private static final InlineKeyboardButton POSSESSIVE_PRONOUNS_BUTTON = new InlineKeyboardButton("Possessive");
+    private static final InlineKeyboardButton REFLEXIVE_PRONOUNS_BUTTON = new InlineKeyboardButton("Reflexive");
     private static final InlineKeyboardButton RETURN_CHOOSE_STUDY = new InlineKeyboardButton("<< Return");
 
     public static InlineKeyboardMarkup inlineMarkup() {
-        PRESENT_TO_BE_BUTTON.setCallbackData("PRESENT_TO_BE_BUTTON");
-        PAST_TO_BE_BUTTON.setCallbackData("PAST_TO_BE_BUTTON");
-        FUTURE_TO_BE_BUTTON.setCallbackData("FUTURE_TO_BE_BUTTON");
+        PERSONAL_PRONOUNS_BUTTON.setCallbackData("PERSONAL_PRONOUNS_BUTTON");
+        POSSESSIVE_PRONOUNS_BUTTON.setCallbackData("POSSESSIVE_PRONOUNS_BUTTON");
+        REFLEXIVE_PRONOUNS_BUTTON.setCallbackData("REFLEXIVE_PRONOUNS_BUTTON");
         RETURN_CHOOSE_STUDY.setCallbackData("RETURN_CHOOSE_STUDY");
 
-        List<InlineKeyboardButton> rowInline1 = List.of(PRESENT_TO_BE_BUTTON, PAST_TO_BE_BUTTON);
-        List<InlineKeyboardButton> rowInline2 = List.of(FUTURE_TO_BE_BUTTON);
+        List<InlineKeyboardButton> rowInline1 = List.of(PERSONAL_PRONOUNS_BUTTON, POSSESSIVE_PRONOUNS_BUTTON);
+        List<InlineKeyboardButton> rowInline2 = List.of(REFLEXIVE_PRONOUNS_BUTTON);
         List<InlineKeyboardButton> rowInline3 = List.of(RETURN_CHOOSE_STUDY);
         List<List<InlineKeyboardButton>> rowsInLine = List.of(rowInline1, rowInline2, rowInline3);
 

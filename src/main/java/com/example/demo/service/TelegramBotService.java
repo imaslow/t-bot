@@ -2,12 +2,9 @@ package com.example.demo.service;
 
 import com.example.demo.buttons.*;
 import com.example.demo.config.BotConfig;
-import com.example.demo.model.Schedule;
-import com.example.demo.model.Student;
+import com.example.demo.model.*;
 import com.example.demo.registr.RegisterUser;
-import com.example.demo.repository.ScheduleRepository;
-import com.example.demo.repository.StudentRepository;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -26,6 +23,8 @@ import static com.example.demo.util.ButtonsConstants.*;
 import static com.example.demo.util.TextConstants.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -37,17 +36,37 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
     private final StudentRepository studentRepository;
 
+    private final VerbsRepository verbsRepository;
+
+    private final PersonalPronounsRepository personalPronounsRepository;
+
+    private final PossessivePronounsRepository possessivePronounsRepository;
+
+    private final ReflexivePronounsRepository reflexivePronounsRepository;
+
     private final RegisterUser registerUser;
 
     private final BotConfig botConfig;
 
-    public TelegramBotService(BotConfig botConfig, UserRepository userRepository, ScheduleRepository scheduleRepository,
-                              StudentRepository studentRepository, RegisterUser registerUser) {
-        this.botConfig = botConfig;
+    private final StudentService studentService;
+
+    public TelegramBotService(UserRepository userRepository, ScheduleRepository scheduleRepository,
+                              StudentRepository studentRepository, VerbsRepository verbsRepository,
+                              PersonalPronounsRepository personalPronounsRepository,
+                              PossessivePronounsRepository possessivePronounsRepository,
+                              ReflexivePronounsRepository reflexivePronounsRepository,
+                              RegisterUser registerUser, BotConfig botConfig,
+                              StudentService studentService) {
         this.userRepository = userRepository;
         this.scheduleRepository = scheduleRepository;
         this.studentRepository = studentRepository;
+        this.verbsRepository = verbsRepository;
+        this.personalPronounsRepository = personalPronounsRepository;
+        this.possessivePronounsRepository = possessivePronounsRepository;
+        this.reflexivePronounsRepository = reflexivePronounsRepository;
         this.registerUser = registerUser;
+        this.botConfig = botConfig;
+        this.studentService = studentService;
         initializeBotCommands();
     }
 
@@ -83,6 +102,10 @@ public class TelegramBotService extends TelegramLongPollingBot {
                 case SCHEDULE:
                     handleUserScheduleCommand(chatId);
                     break;
+                case SET_DATA:
+                        prepareAndSendMessage(chatId, SET_DATA_FIRST_NAME); // Запрос на ввод имени
+                        handleStudentSetData(chatId, message); // Обработка данных студента
+                    break;
                 case MY_DATA:
                     handleUserDataCommand(chatId);
                     break;
@@ -110,6 +133,24 @@ public class TelegramBotService extends TelegramLongPollingBot {
             case FUTURE_SIMPLE_BUTTON:
                 prepareAndSendMessage(chatId, FUTURE_SIMPLE);
                 break;
+            case PRESENT_CONTINUOUS_BUTTON:
+                prepareAndSendMessage(chatId, PRESENT_CONTINUOUS);
+                break;
+            case PAST_CONTINUOUS_BUTTON:
+                prepareAndSendMessage(chatId, PAST_CONTINUOUS);
+                break;
+            case FUTURE_CONTINUOUS_BUTTON:
+                prepareAndSendMessage(chatId, FUTURE_CONTINUOUS);
+                break;
+            case PRESENT_PERFECT_BUTTON:
+                prepareAndSendMessage(chatId, PRESENT_PERFECT);
+                break;
+            case PAST_PERFECT_BUTTON:
+                prepareAndSendMessage(chatId, PAST_PERFECT);
+                break;
+            case FUTURE_PERFECT_BUTTON:
+                prepareAndSendMessage(chatId, FUTURE_PERFECT);
+                break;
             case PRESENT_TO_BE_BUTTON:
                 prepareAndSendMessage(chatId, TO_BE_PRESENT);
                 break;
@@ -128,6 +169,37 @@ public class TelegramBotService extends TelegramLongPollingBot {
                 break;
             case SIMPLE_BUTTON:
                 sendButtonMessage(chatId, BUTTON_SIMPLE_TENSES, ButtonsSimpleTenses.inlineMarkup());
+                break;
+            case CONTINUOUS_BUTTON:
+                sendButtonMessage(chatId, BUTTON_CONTINUOUS_TENSES, ButtonsContinuousTenses.inlineMarkup());
+                break;
+            case PERFECT_BUTTON:
+                sendButtonMessage(chatId, BUTTON_PERFECT_TENSES, ButtonsPerfectTenses.inlineMarkup());
+                break;
+            case VERBS_100:
+                handleVerbsDataCommand(chatId);
+                break;
+            case PRONOUNS:
+                prepareAndSendMessage(chatId, PRONOUNS_MESSAGE);
+                sendButtonMessage(chatId, BUTTON_CHOOSE_PRONOUNS, ButtonsPronouns.inlineMarkup());
+                break;
+            case PERSONAL_PRONOUNS_BUTTON:
+                handlePersonalPronounsCommand(chatId);
+                prepareAndSendMessage(chatId, PRONOUNS_MESSAGE_TWO);
+                break;
+            case POSSESSIVE_PRONOUNS_BUTTON:
+                handlePossessivePronounsCommand(chatId);
+                prepareAndSendMessage(chatId, PRONOUNS_MESSAGE_THREE);
+                break;
+            case REFLEXIVE_PRONOUNS_BUTTON:
+                handleReflexivePronounsCommand(chatId);
+                prepareAndSendMessage(chatId, PRONOUNS_MESSAGE_FOUR);
+                break;
+            case RETURN_CHOOSE_STUDY:
+                sendButtonMessage(chatId, BUTTON_CHOOSE_STUDY, ButtonsChooseStudy.inlineMarkup());
+                break;
+            case RETURN_CHOOSE_TENSES:
+                sendButtonMessage(chatId, BUTTON_TENSES, ButtonsTenses.inlineMarkup());
                 break;
             default:
                 break;
@@ -191,29 +263,91 @@ public class TelegramBotService extends TelegramLongPollingBot {
         botAnswerUtils(callbackData, chatId);
     }
 
-    private void handleUserScheduleCommand(long chatId) {
-        List<Schedule> schedules = scheduleRepository.findAll();
-        StringBuilder scheduleMessage = new StringBuilder();
-        scheduleMessage.append("Занятия в этом месяце:\n");
-        for (Schedule schedule : schedules) {
-            scheduleMessage.append(schedule.toString()).append("\n");
-        }
-        prepareAndSendMessage(chatId, scheduleMessage.toString());
+    private void handleUserDataCommand(long chatId) {
+        Optional<Student> studentOptional = studentRepository.findUserByChatId(chatId);
+
+        studentOptional.ifPresentOrElse(
+                student -> {
+                    StringBuilder studentMessage = new StringBuilder();
+                    studentMessage.append(STUDENT_MESSAGE);
+                    studentMessage.append(student).append("\n");
+                    prepareAndSendMessage(chatId, studentMessage.toString());
+                },
+                () -> prepareAndSendMessage(chatId, NOT_FOUND_STUDENT)
+        );
     }
 
-    private void handleUserDataCommand(long chatId) {
-        List<Student> students = studentRepository.findAll();
-        StringBuilder studentMessage = new StringBuilder();
-        studentMessage.append("Данные студента:\n");
+    private void handleUserScheduleCommand(long chatId) {
+        List<Schedule> schedules = scheduleRepository.findAll();
+        handleDataCommand(chatId, schedules, SCHEDULE_MESSAGE);
+    }
 
-        for (Student student : students) {
-            if (student.getUserChatId().getChatId().equals(chatId)) {
-                studentMessage.append(student).append("\n");
-                prepareAndSendMessage(chatId, studentMessage.toString());
-                break;
+    private void handlePersonalPronounsCommand(long chatId) {
+        List<PersonalPronouns> personalPronounsList = personalPronounsRepository.findAll();
+        handleDataCommand(chatId, personalPronounsList, PERSONAL_PRONOUNS_MESSAGE);
+    }
+
+    private void handlePossessivePronounsCommand(long chatId) {
+        List<PossessivePronouns> possessivePronounsList = possessivePronounsRepository.findAll();
+        handleDataCommand(chatId, possessivePronounsList, POSSESSIVE_PRONOUNS_MESSAGE);
+    }
+
+    private void handleReflexivePronounsCommand(long chatId) {
+        List<ReflexivePronouns> reflexivePronounsList = reflexivePronounsRepository.findAll();
+        handleDataCommand(chatId, reflexivePronounsList, REFLEXIVE_PRONOUNS_MESSAGE);
+    }
+
+    private void handleVerbsDataCommand(long chatId) {
+        List<Verbs> verbs = verbsRepository.findAll();
+        handleDataCommand(chatId, verbs, VERBS_MESSAGE);
+    }
+
+    private <T> void handleDataCommand(long chatId, List<T> dataList, String messageHeader) {
+        String dataMessage = dataList.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining("\n", messageHeader, ""));
+        prepareAndSendMessage(chatId, dataMessage);
+    }
+
+    public void handleStudentSetData(long chatId, Message message) {
+        Student student = studentService.getStudent(chatId);
+        if (student == null) {
+
+            Student newStudent = new Student();
+            newStudent.setChatId(message.getChatId());
+
+            if (newStudent.getFirstName() == null) {
+                newStudent.setFirstName(message.getText());
+                studentService.saveOrUpdateUserData(newStudent);
+                prepareAndSendMessage(newStudent.getChatId(), "Введите фамилию:");
+            } else if (newStudent.getLastName() == null) {
+                newStudent.setLastName(message.getText());
+                studentService.saveOrUpdateUserData(newStudent);
+                prepareAndSendMessage(newStudent.getChatId(), "Введите email:");
+            } else if (newStudent.getEmail() == null) {
+                newStudent.setEmail(message.getText());
+                studentService.saveOrUpdateUserData(newStudent);
+                prepareAndSendMessage(newStudent.getChatId(), "Данные успешно сохранены!");
             }
         }
     }
+//        for (Student student : students) {
+//            if (student.getChatId() != chatId) {
+//                student.setChatId(chatId);
+//                if (student.getFirstName() == null) {
+//                    student.setFirstName(sendMessage);
+//                    prepareAndSendMessage(chatId, "Введите фамилию:");
+//                } else if (student.getLastName() == null) {
+//                    student.setLastName(sendMessage);
+//                    prepareAndSendMessage(chatId, "Введите email:");
+//                } else if (student.getEmail() == null) {
+//                    student.setEmail(sendMessage);
+//                    studentService.saveOrUpdateUserData(student);
+//                    prepareAndSendMessage(chatId, "Данные успешно сохранены!");
+//                }
+//            }
+//        }
+
 
     @Override
     public String getBotUsername() {
