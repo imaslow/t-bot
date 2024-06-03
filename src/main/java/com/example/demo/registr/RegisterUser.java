@@ -1,6 +1,6 @@
 package com.example.demo.registr;
 
-import com.example.demo.model.User;
+import com.example.demo.model.UserData;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,12 +18,12 @@ public class RegisterUser {
 
     public void register(Message msg) {
 
-        if(userRepository.findById(msg.getChatId()).isEmpty()){
+        if (userRepository.findById(msg.getChatId()).isEmpty()) {
 
             var chatId = msg.getChatId();
             var chat = msg.getChat();
 
-            User user = new User();
+            UserData user = new UserData();
 
             user.setChatId(chatId);
             user.setFirstName(chat.getFirstName());
@@ -35,5 +35,4 @@ public class RegisterUser {
             log.info("user saved: " + user);
         }
     }
-
 }

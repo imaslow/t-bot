@@ -2,12 +2,15 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
 @Entity(name = "teacher")
+@Accessors(chain = true)
 public class Teacher {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long teacherId;
 
     private String firstName;
@@ -25,5 +28,4 @@ public class Teacher {
                 "\nФамилия: " + lastName +
                 "\nСтатус: " + status.getStatus();
     }
-
 }

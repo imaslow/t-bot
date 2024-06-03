@@ -5,7 +5,6 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 
 import java.util.List;
 
-
 public class ButtonsStartMessage {
     private static final InlineKeyboardButton YES_BUTTON = new InlineKeyboardButton("Yes");
     private static final InlineKeyboardButton NO_BUTTON = new InlineKeyboardButton("No");

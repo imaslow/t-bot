@@ -12,18 +12,15 @@ spring:
     password: root
 
   liquibase:
-    enabled: false
+    enabled: true
     change-log: classpath:db/changelog/changelog-master.xml
     default-schema: public
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+  jpa.hibernate.ddl-auto: update
 
 bot-credentials:
-  name: good_mood_guide_bot
-  token: 7179259645:AAFbrzpiXKFqVWssU8l5GHU7AdpKPX-I6lg
-  owner: 800063551
+  name: ${BOT_NAME}
+  token: ${BOT_TOKEN}
+  owner: ${CHAT_ID_OWNER}
 
 

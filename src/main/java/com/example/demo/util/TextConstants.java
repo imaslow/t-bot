@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TextConstants {
+public final class TextConstants {
 
     public static final String INFO_MESSAGE =
             "Школы Вильяма Рейли работают в России с 2009 года. " +
@@ -28,12 +28,14 @@ public class TextConstants {
     public static final String HELP_TEXT =
             "This bot is created for Elementary group.\n\n" +
                     "You can execute commands from the main menu on the left or by typing a command:\n\n" +
-                    "Type /start to see a welcome message\n\n" +
-                    "Type /mydata to see data stored about yourself\n\n" +
-                    "Type /deletedata to delete data about yourself\n\n" +
-                    "Type /contacts to view school contacts\n\n" +
-                    "Type /info to view info about school\n\n" +
-                    "Type /help to see this message again";
+                    "/start to see a welcome message\n\n" +
+                    "/schedule to see your schedule in this month\n\n" +
+                    "/setdata to set your data in group\n\n" +
+                    "/mydata to see data stored about yourself\n\n" +
+                    "/deletedata to delete data about yourself\n\n" +
+                    "/contacts to view school contacts\n\n" +
+                    "/info to view info about school\n\n" +
+                    "/help to see this message again";
 
     public static final String PRESENT_SIMPLE =
             "Present Simple - это простое настоящее время. " +

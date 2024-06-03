@@ -7,7 +7,6 @@ import java.util.List;
 
 public class ButtonsPronouns {
 
-
     private static final InlineKeyboardButton PERSONAL_PRONOUNS_BUTTON = new InlineKeyboardButton("Personal");
     private static final InlineKeyboardButton POSSESSIVE_PRONOUNS_BUTTON = new InlineKeyboardButton("Possessive");
     private static final InlineKeyboardButton REFLEXIVE_PRONOUNS_BUTTON = new InlineKeyboardButton("Reflexive");

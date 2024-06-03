@@ -8,15 +8,24 @@
         <tagDatabase tag="v-1.0"/>
     </changeSet>
 
-    <include file="01_filling_table_group_name.sql" relativeToChangelogFile="true"/>
-    <include file="02_filling_table_status.sql" relativeToChangelogFile="true"/>
-    <include file="03_filling_table_teacher.sql" relativeToChangelogFile="true"/>
-    <include file="04_filling_table_schedule.sql" relativeToChangelogFile="true"/>
-    <include file="05_filling_table_student.sql" relativeToChangelogFile="true"/>
-    <include file="06_filling_table_verbs.sql" relativeToChangelogFile="true"/>
-    <include file="07_filling_table_personal_pronouns.sql" relativeToChangelogFile="true"/>
-    <include file="08_filling_table_possessive_pronouns.sql" relativeToChangelogFile="true"/>
-    <include file="09_filling_table_reflexive_pronouns.sql" relativeToChangelogFile="true"/>
+    <include file="01_create_table_user_data.sql" relativeToChangelogFile="true"/>
+    <include file="02_create_table_group_name.sql" relativeToChangelogFile="true"/>
+    <include file="03_create_table_status.sql" relativeToChangelogFile="true"/>
+    <include file="04_create_table_teacher.sql" relativeToChangelogFile="true"/>
+    <include file="05_create_table_schedule.sql" relativeToChangelogFile="true"/>
+    <include file="06_create_table_student.sql" relativeToChangelogFile="true"/>
+    <include file="07_create_table_verbs.sql" relativeToChangelogFile="true"/>
+    <include file="08_create_table_personal_pronouns.sql" relativeToChangelogFile="true"/>
+    <include file="09_create_table_possessive_pronouns.sql" relativeToChangelogFile="true"/>
+    <include file="10_create_table_reflexive_pronouns.sql" relativeToChangelogFile="true"/>
+    <include file="11_filling_table_group_name.sql" relativeToChangelogFile="true"/>
+    <include file="12_filling_table_status.sql" relativeToChangelogFile="true"/>
+    <include file="13_filling_table_teacher.sql" relativeToChangelogFile="true"/>
+    <include file="14_filling_table_schedule.sql" relativeToChangelogFile="true"/>
+    <include file="15_filling_table_verbs.sql" relativeToChangelogFile="true"/>
+    <include file="16_filling_table_personal_pronouns.sql" relativeToChangelogFile="true"/>
+    <include file="17_filling_table_possessive_pronouns.sql" relativeToChangelogFile="true"/>
+    <include file="18_filling_table_reflexive_pronouns.sql" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>

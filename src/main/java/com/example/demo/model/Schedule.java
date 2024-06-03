@@ -7,10 +7,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Data
-@Entity(name = "schedule")
+@Entity
 public class Schedule {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheduleId;
 
     private LocalDateTime dateTime;

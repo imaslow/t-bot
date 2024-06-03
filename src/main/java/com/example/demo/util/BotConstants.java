@@ -6,14 +6,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class BotConstants {
 
-    public static final String START = "/start";
-    public static final String HELP = "/help";
-    public static final String SEND = "/send";
-    public static final String CONTACTS = "/contacts";
-    public static final String INFO = "/info";
-    public static final String SCHEDULE = "/schedule";
-    public static final String MY_DATA = "/mydata";
-    public static final String SET_DATA = "/setdata";
     public static final String ERROR_TEXT = "Error occurred: ";
     public static final String YES_BUTTON_MESSAGE = "You're already one step closer to your goal!";
     public static final String NO_BUTTON_MESSAGE = "Close the door on the other side";
@@ -29,7 +21,21 @@ public final class BotConstants {
     public static final String VERBS_MESSAGE = "This is 100 most popular verbs in 3 forms:\n\n";
     public static final String STUDENT_MESSAGE = "Данные студента:\n";
     public static final String NOT_FOUND_STUDENT = "Данные студента не найдены.";
+    public static final String NO_MESSAGE = "Я поддерживаю команды, начинающиеся со слеша(/).\n"
+            + "Чтобы посмотреть список комманд введи /help";
+    public static final String UNKNOWN_MESSAGE = "Не понимаю вас \uD83D\uDE1F, напишите /help чтобы узнать что я понимаю.";
 
-    public static final String SET_DATA_FIRST_NAME = "Введите имя:";
+    public static final String ENTER_FIRST_NAME = "Введите имя:";
+    public static final String ENTER_LAST_NAME = "Введите фамилию:";
+    public static final String ENTER_EMAIL = "Введите email:\n"
+            + "example: bradpitt@mail.com";
+    public static final String DATE_SAVED = "Спасибо, данные сохранены!";
+    public static final String ERROR_SET_DATA = "Вы уже заносили данные";
+    public static final String SURE_DELETE = "Are you sure?";
+    public static final String STUDENT_DELETE_MESSAGE = "Student's data has been deleted";
+    public static final String NO_DELETE_MESSAGE = "Allright, Allright, Allright..\n"
+            + "press /start";
+    public static final String NOT_FOUND_STUDENT_TO_DELETE = "You didn't enter your details\n"
+            + "press /start";
 
 }

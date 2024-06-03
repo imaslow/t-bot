@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 @Data
@@ -18,7 +17,6 @@ public class Student {
 
     private String lastName;
 
-    @Email
     private String email;
 
     @ManyToOne
@@ -38,5 +36,4 @@ public class Student {
                         "\nemail = " + email +
                         "\nteacher = " + teacher.getFirstName() + " " + teacher.getLastName();
     }
-
 }
