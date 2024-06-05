@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    image: 'imaslow/t-bot:1.0'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/t_bot_db
+      - BOT_NAME=${BOT_NAME}
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHAT_ID_OWNER=${CHAT_ID_OWNER}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+
+  db:
+    image: 'postgres:12.12'
+    container_name: db
+    environment:
+      - POSTGRES_DB=t_bot_db
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
