@@ -38,4 +38,7 @@ public final class BotConstants {
     public static final String NOT_FOUND_STUDENT_TO_DELETE = "You didn't enter your details\n"
             + "press /start";
 
+    public static final String MODAL_VERBS_TEXT = "https://englex.ru/all-modal-verbs/#:~:text=К%20модальным%20глаголам%20в%20английском,сестра%20умеет%20играть%20на%20гитаре.";
+    public static final String MODAL_VERBS_TEXT2 = "https://skyeng.ru/articles/modalnye-glagoly-v-anglijskom-yazyke/";
+
 }

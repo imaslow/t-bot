@@ -40,19 +40,13 @@ public class ButtonsServiceImpl implements ButtonsService {
             case PRESENT_TO_BE_BUTTON -> sendBotMessageService.prepareAndSendMessage(chatId, TO_BE_PRESENT);
             case PAST_TO_BE_BUTTON -> sendBotMessageService.prepareAndSendMessage(chatId, TO_BE_PAST);
             case FUTURE_TO_BE_BUTTON -> sendBotMessageService.prepareAndSendMessage(chatId, TO_BE_FUTURE);
-            case TENSES_BUTTON ->
-                    sendBotMessageService.sendButtonMessage(chatId, BUTTON_TENSES, ButtonsTenses.inlineMarkup());
-            case SIMPLE_BUTTON ->
-                    sendBotMessageService.sendButtonMessage(chatId, BUTTON_SIMPLE_TENSES, ButtonsSimpleTenses.inlineMarkup());
-            case CONTINUOUS_BUTTON ->
-                    sendBotMessageService.sendButtonMessage(chatId, BUTTON_CONTINUOUS_TENSES, ButtonsContinuousTenses.inlineMarkup());
-            case PERFECT_BUTTON ->
-                    sendBotMessageService.sendButtonMessage(chatId, BUTTON_PERFECT_TENSES, ButtonsPerfectTenses.inlineMarkup());
+            case TENSES_BUTTON -> sendBotMessageService.sendButtonMessage(chatId, BUTTON_TENSES, ButtonsTenses.inlineMarkup());
+            case SIMPLE_BUTTON -> sendBotMessageService.sendButtonMessage(chatId, BUTTON_SIMPLE_TENSES, ButtonsSimpleTenses.inlineMarkup());
+            case CONTINUOUS_BUTTON -> sendBotMessageService.sendButtonMessage(chatId, BUTTON_CONTINUOUS_TENSES, ButtonsContinuousTenses.inlineMarkup());
+            case PERFECT_BUTTON -> sendBotMessageService.sendButtonMessage(chatId, BUTTON_PERFECT_TENSES, ButtonsPerfectTenses.inlineMarkup());
             case VERBS_100 -> verbsService.handleVerbsDataCommand(chatId);
-            case RETURN_CHOOSE_STUDY ->
-                    sendBotMessageService.sendButtonMessage(chatId, BUTTON_CHOOSE_STUDY, ButtonsChooseStudy.inlineMarkup());
-            case RETURN_CHOOSE_TENSES ->
-                    sendBotMessageService.sendButtonMessage(chatId, BUTTON_TENSES, ButtonsTenses.inlineMarkup());
+            case RETURN_CHOOSE_STUDY -> sendBotMessageService.sendButtonMessage(chatId, BUTTON_CHOOSE_STUDY, ButtonsChooseStudy.inlineMarkup());
+            case RETURN_CHOOSE_TENSES -> sendBotMessageService.sendButtonMessage(chatId, BUTTON_TENSES, ButtonsTenses.inlineMarkup());
             case NO_BUTTON_DELETE_DATA -> sendBotMessageService.prepareAndSendMessage(chatId, NO_DELETE_MESSAGE);
             case YES_BUTTON -> {
                 sendBotMessageService.prepareAndSendMessage(chatId, YES_BUTTON_MESSAGE);
@@ -81,6 +75,10 @@ public class ButtonsServiceImpl implements ButtonsService {
             case YES_BUTTON_DELETE_DATA -> {
                 studentService.deleteStudent(chatId);
                 sendBotMessageService.prepareAndSendMessage(chatId, STUDENT_DELETE_MESSAGE);
+            }
+            case MODAL_VERBS -> {
+                sendBotMessageService.prepareAndSendMessage(chatId, MODAL_VERBS_TEXT);
+                sendBotMessageService.prepareAndSendMessage(chatId, MODAL_VERBS_TEXT2);
             }
         }
     }

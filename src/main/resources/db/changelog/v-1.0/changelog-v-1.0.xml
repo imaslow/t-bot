@@ -26,5 +26,4 @@
     <include file="16_filling_table_possessive_pronouns.sql" relativeToChangelogFile="true"/>
     <include file="17_filling_table_reflexive_pronouns.sql" relativeToChangelogFile="true"/>
 
-
 </databaseChangeLog>

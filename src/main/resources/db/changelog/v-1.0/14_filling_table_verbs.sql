@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset maslov_ilya:1.0.15
+--changeset maslov_ilya:1.0.14
 --comment verbs
 INSERT INTO verbs (infinitive, simple_past, past_participle, translate)
 VALUES ('be', 'was/were', 'been', 'быть'),

@@ -18,7 +18,6 @@ public class ReflexivePronounsServiceImpl implements ReflexivePronounsService {
     private final ReflexivePronounsRepository reflexivePronounsRepository;
     private final HandleData handleData;
 
-
     @Override
     public void handleReflexivePronounsCommand(long chatId) {
         List<ReflexivePronouns> reflexivePronounsList = reflexivePronounsRepository.findAll();

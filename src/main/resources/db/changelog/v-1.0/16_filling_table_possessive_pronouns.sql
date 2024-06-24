@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset maslov_ilya:1.0.17
+--changeset maslov_ilya:1.0.16
 --comment possessive_pronouns
 INSERT INTO possessive_pronouns (pp_subject, possessive_adjectives, possessive_pronouns, translate, example)
 VALUES (1, 'My', 'Mine', 'Мой', 'This place is mine'),

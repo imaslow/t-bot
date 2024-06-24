@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset maslov_ilya:1.0.18
+--changeset maslov_ilya:1.0.17
 --comment reflexive_pronouns
 INSERT INTO reflexive_pronouns (pp_subject, reflexive_pronouns, example)
 VALUES (1, 'Myself', 'I rarely make the bed by myself'),

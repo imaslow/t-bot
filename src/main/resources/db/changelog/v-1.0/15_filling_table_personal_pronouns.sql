@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset maslov_ilya:1.0.16
+--changeset maslov_ilya:1.0.15
 --comment personal_pronouns
 INSERT INTO personal_pronouns (pp_subject, pp_subject_translate, pp_addition, pp_addition_translate, example)
 VALUES ('I', 'Я', 'Me', 'Мне', 'She’ll believe me someday'),
