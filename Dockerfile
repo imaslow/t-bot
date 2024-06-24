@@ -6,4 +6,4 @@ COPY src src/
 COPY target/t-bot-1.0.8.jar /app/t-bot-1.0.8.jar
 EXPOSE 8080
 
-CMD ["java", "-jar", "t-bot-1.0.7.jar"]
+CMD ["java", "-jar", "t-bot-1.0.8.jar"]
