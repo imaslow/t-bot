@@ -41,11 +41,9 @@ public class SendBotMessageServiceImpl implements SendBotMessageService {
 
     @Override
     public void welcomeAndSendMessage(long chatId, String name) {
-
         String answer = "Hi, " + name + ", nice to meet you";
         log.info("Replied to user " + name);
         prepareAndSendMessage(chatId, answer);
-
     }
 
     @Override
