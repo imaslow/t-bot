@@ -25,5 +25,7 @@
     <include file="15_filling_table_personal_pronouns.sql" relativeToChangelogFile="true"/>
     <include file="16_filling_table_possessive_pronouns.sql" relativeToChangelogFile="true"/>
     <include file="17_filling_table_reflexive_pronouns.sql" relativeToChangelogFile="true"/>
+    <include file="18_create_table_travel.sql" relativeToChangelogFile="true"/>
+    <include file="19_filling_table_travel.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

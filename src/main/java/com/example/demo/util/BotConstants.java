@@ -40,5 +40,22 @@ public final class BotConstants {
 
     public static final String MODAL_VERBS_TEXT = "https://englex.ru/all-modal-verbs/#:~:text=К%20модальным%20глаголам%20в%20английском,сестра%20умеет%20играть%20на%20гитаре.";
     public static final String MODAL_VERBS_TEXT2 = "https://skyeng.ru/articles/modalnye-glagoly-v-anglijskom-yazyke/";
+    public static final String TAXI_TRAVEL = "taxi";
+    public static final String AIRLINE_TRAVEL = "airline";
+    public static final String CAR_TRAVEL = "car";
+    public static final String CUSTOM_TRAVEL = "custom";
+    public static final String HOTEL_TRAVEL = "hotel";
+    public static final String TAXI_TRAVEL_PHRASES = "Popular taxi phrases \n\n";
+    public static final String AIRLINE_TRAVEL_PHRASES = "Popular airline phrases \n\n";
+    public static final String CAR_TRAVEL_PHRASES = "Popular car phrases \n\n";
+    public static final String CUSTOM_TRAVEL_PHRASES = "Popular custom phrases \n\n";
+    public static final String HOTEL_TRAVEL_PHRASES = "Popular hotel phrases \n\n";
+    public static final String RETURN_TRAVEL_MESSAGE = "Back to choose travel";
+    public static final String RETURN_SIMPLE_TENSES = "Return to choose simple tenses";
+    public static final String RETURN_CONTINUOUS_TENSES = "Return to choose continuous tenses";
+    public static final String RETURN_PERFECT_TENSES = "Return to perfect tenses";
+    public static final String RETURN_CHOOSE_TO_BE = "Return to choose to be";
+    public static final String RETURN_CHOOSE_STUDY = "Return to choose study";
+    public static final String RETURN_CHOOSE_PRONOUNS = "Return to choose pronouns";
 
 }

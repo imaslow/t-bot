@@ -287,4 +287,7 @@ public final class TextConstants {
                     "возвратные местоимения (reflexive pronouns). Они " +
                     "означают «себя», «себе» и т. д., а также «сам/сама/само». \n\n";
 
+    public static final String TRAVEL_MESSAGE =
+            "Choose your travel situation \n\n";
+
 }

@@ -11,7 +11,8 @@ public class ButtonsChooseStudy {
     private static final InlineKeyboardButton TO_BE_BUTTON = new InlineKeyboardButton("To be");
     private static final InlineKeyboardButton VERBS_100 = new InlineKeyboardButton("100 verbs");
     private static final InlineKeyboardButton PRONOUNS = new InlineKeyboardButton("Pronouns");
-    public static final InlineKeyboardButton MODAL_VERBS = new InlineKeyboardButton("Modal verbs");
+    private static final InlineKeyboardButton MODAL_VERBS = new InlineKeyboardButton("Modal verbs");
+    private static final InlineKeyboardButton TRAVEL = new InlineKeyboardButton("Travel");
 
     public static InlineKeyboardMarkup inlineMarkup() {
         TENSES_BUTTON.setCallbackData("TENSES_BUTTON");
@@ -19,10 +20,11 @@ public class ButtonsChooseStudy {
         VERBS_100.setCallbackData("VERBS_100");
         PRONOUNS.setCallbackData("PRONOUNS");
         MODAL_VERBS.setCallbackData("MODAL_VERBS");
+        TRAVEL.setCallbackData("TRAVEL");
 
         List<InlineKeyboardButton> rowInline1 = List.of(TENSES_BUTTON, TO_BE_BUTTON);
         List<InlineKeyboardButton> rowInline2 = List.of(VERBS_100, PRONOUNS);
-        List<InlineKeyboardButton> rowInline3 = List.of(MODAL_VERBS);
+        List<InlineKeyboardButton> rowInline3 = List.of(MODAL_VERBS, TRAVEL);
         List<List<InlineKeyboardButton>> rowsInLine = List.of(rowInline1, rowInline2, rowInline3);
 
         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();

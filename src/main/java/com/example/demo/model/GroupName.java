@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Data
-@Entity
+@Entity(name = "groupName")
 @Accessors(chain = true)
 public class GroupName {
 
