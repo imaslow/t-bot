@@ -108,6 +108,14 @@ public class ButtonsServiceImpl implements ButtonsService {
                 travelService.getTravelPhrases(chatId, HOTEL_TRAVEL, HOTEL_TRAVEL_PHRASES);
                 sendBotMessageService.sendButtonMessage(chatId, RETURN_TRAVEL_MESSAGE, ReturnChooseTravelButton.inlineMarkup());
             }
+            case STREET_BUTTON -> {
+                travelService.getTravelPhrases(chatId, STREET_TRAVEL, STREET_TRAVEL_PHRASES);
+                sendBotMessageService.sendButtonMessage(chatId, RETURN_TRAVEL_MESSAGE, ReturnChooseTravelButton.inlineMarkup());
+            }
+            case CAFE_BUTTON -> {
+                travelService.getTravelPhrases(chatId, CAFE_TRAVEL, CAFE_TRAVEL_PHRASES);
+                sendBotMessageService.sendButtonMessage(chatId, RETURN_TRAVEL_MESSAGE, ReturnChooseTravelButton.inlineMarkup());
+            }
             case YES_BUTTON, RETURN_CHOOSE_STUDY -> {
                 sendBotMessageService.prepareAndSendMessage(chatId, YES_BUTTON_MESSAGE);
                 sendBotMessageService.sendButtonMessage(chatId, BUTTON_CHOOSE_STUDY, ButtonsChooseStudy.inlineMarkup());

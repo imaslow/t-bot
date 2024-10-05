@@ -45,11 +45,15 @@ public final class BotConstants {
     public static final String CAR_TRAVEL = "car";
     public static final String CUSTOM_TRAVEL = "custom";
     public static final String HOTEL_TRAVEL = "hotel";
+    public static final String STREET_TRAVEL = "street";
+    public static final String CAFE_TRAVEL = "cafe";
     public static final String TAXI_TRAVEL_PHRASES = "Popular taxi phrases \n\n";
     public static final String AIRLINE_TRAVEL_PHRASES = "Popular airline phrases \n\n";
     public static final String CAR_TRAVEL_PHRASES = "Popular car phrases \n\n";
     public static final String CUSTOM_TRAVEL_PHRASES = "Popular custom phrases \n\n";
     public static final String HOTEL_TRAVEL_PHRASES = "Popular hotel phrases \n\n";
+    public static final String STREET_TRAVEL_PHRASES = "Popular street phrases \n\n";
+    public static final String CAFE_TRAVEL_PHRASES = "Popular cafe phrases \n\n";
     public static final String RETURN_TRAVEL_MESSAGE = "Back to choose travel";
     public static final String RETURN_SIMPLE_TENSES = "Return to choose simple tenses";
     public static final String RETURN_CONTINUOUS_TENSES = "Return to choose continuous tenses";
