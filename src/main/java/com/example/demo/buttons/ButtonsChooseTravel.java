@@ -13,7 +13,7 @@ public class ButtonsChooseTravel {
     private static final InlineKeyboardButton CUSTOM_BUTTON = new InlineKeyboardButton("Custom");
     private static final InlineKeyboardButton HOTEL_BUTTON = new InlineKeyboardButton("Hotel");
     private static final InlineKeyboardButton STREET_BUTTON = new InlineKeyboardButton("Street");
-    private static final InlineKeyboardButton CAFE_BUTTON = new InlineKeyboardButton("Hotel");
+    private static final InlineKeyboardButton CAFE_BUTTON = new InlineKeyboardButton("Cafe");
     private static final InlineKeyboardButton RETURN_CHOOSE_STUDY = new InlineKeyboardButton("<< Return");
 
     public static InlineKeyboardMarkup inlineMarkup() {
