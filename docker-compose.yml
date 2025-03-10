@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: 'imaslow/t-bot:1.1.2'
+    image: 'imaslow/t-bot:1.1.3'
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,7 +20,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
 
   db:
-    image: 'postgres:12.12'
+    image: 'postgres:14.0'
     container_name: db
     ports:
       - "5432:5432"

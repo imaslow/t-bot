@@ -7,4 +7,12 @@
 /dataSources/
 /dataSources.local.xml
 
-.env
+### IntelliJ IDEA ###
+.idea/
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
