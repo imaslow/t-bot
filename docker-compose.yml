@@ -20,7 +20,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
 
   db:
-    image: 'postgres:14.0'
+    image: 'postgres:15.3'
     container_name: db
     ports:
       - "5432:5432"
